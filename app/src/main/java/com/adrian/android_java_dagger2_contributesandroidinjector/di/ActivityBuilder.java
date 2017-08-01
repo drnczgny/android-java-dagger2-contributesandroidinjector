@@ -1,19 +1,14 @@
 package com.adrian.android_java_dagger2_contributesandroidinjector.di;
 
-import android.app.Activity;
-
+import com.adrian.android_java_dagger2_contributesandroidinjector.scope.ActivityScope;
 import com.adrian.android_java_dagger2_contributesandroidinjector.ui.detail.DetailActivity;
-import com.adrian.android_java_dagger2_contributesandroidinjector.ui.detail.DetailActivityComponent;
+import com.adrian.android_java_dagger2_contributesandroidinjector.ui.detail.DetailActivityModule;
+import com.adrian.android_java_dagger2_contributesandroidinjector.ui.detail.DetailsFragmentProviderModule;
 import com.adrian.android_java_dagger2_contributesandroidinjector.ui.main.MainActivity;
-import com.adrian.android_java_dagger2_contributesandroidinjector.ui.main.MainActivityComponent;
+import com.adrian.android_java_dagger2_contributesandroidinjector.ui.main.MainActivityModule;
 
-import javax.inject.Singleton;
-
-import dagger.Binds;
 import dagger.Module;
-import dagger.android.ActivityKey;
-import dagger.android.AndroidInjector;
-import dagger.multibindings.IntoMap;
+import dagger.android.ContributesAndroidInjector;
 
 /**
  * Created by cadri on 2017. 08. 01..
@@ -22,16 +17,12 @@ import dagger.multibindings.IntoMap;
 @Module
 public abstract class ActivityBuilder {
 
-    @Singleton
-    @Binds
-    @IntoMap
-    @ActivityKey(MainActivity.class)
-    abstract AndroidInjector.Factory<? extends Activity> bindMainActivity(MainActivityComponent.Builder builder);
+    @ActivityScope
+    @ContributesAndroidInjector(modules = MainActivityModule.class)
+    abstract MainActivity bindMainActivity();
 
-    @Singleton
-    @Binds
-    @IntoMap
-    @ActivityKey(DetailActivity.class)
-    abstract AndroidInjector.Factory<? extends Activity> bindDetailActivity(DetailActivityComponent.Builder builder);
+    @ActivityScope
+    @ContributesAndroidInjector(modules = {DetailActivityModule.class, DetailsFragmentProviderModule.class})
+    abstract DetailActivity bindDeatilActivity();
 
 }

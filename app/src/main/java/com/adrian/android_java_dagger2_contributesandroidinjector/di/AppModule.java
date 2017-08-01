@@ -4,8 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 import com.adrian.android_java_dagger2_contributesandroidinjector.data.ApiService;
-import com.adrian.android_java_dagger2_contributesandroidinjector.ui.detail.DetailActivityComponent;
-import com.adrian.android_java_dagger2_contributesandroidinjector.ui.main.MainActivityComponent;
 
 import javax.inject.Singleton;
 
@@ -16,7 +14,7 @@ import dagger.Provides;
  * Created by cadri on 2017. 08. 01..
  */
 
-@Module(subcomponents = {MainActivityComponent.class, DetailActivityComponent.class})
+@Module
 public class AppModule {
 
     @Singleton

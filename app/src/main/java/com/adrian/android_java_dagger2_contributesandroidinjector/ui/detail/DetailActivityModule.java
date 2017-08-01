@@ -2,7 +2,6 @@ package com.adrian.android_java_dagger2_contributesandroidinjector.ui.detail;
 
 import com.adrian.android_java_dagger2_contributesandroidinjector.data.ApiService;
 import com.adrian.android_java_dagger2_contributesandroidinjector.scope.ActivityScope;
-import com.adrian.android_java_dagger2_contributesandroidinjector.ui.detail.fragment.DetailFragmentComponent;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,7 +10,7 @@ import dagger.Provides;
  * Created by cadri on 2017. 08. 01..
  */
 
-@Module(subcomponents = DetailFragmentComponent.class)
+@Module
 public class DetailActivityModule {
 
     @ActivityScope
